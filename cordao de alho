@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" style="color-scheme: light;"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marmitaria Cordão de Alho</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f1fd;--card:#fff;--tx:#2a1648;--mu:#6b5a86;--p:#4a1d8a;--pl:#8e5fd6;--pp:#e9ddfa;--bd:#d9c9f0;--er:#9b1c3a;--erb:#fde8ec;--ok:#1e6b3a;--okb:#e7f6ec;--bt:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1226;--card:#261b38;--tx:#f1eaff;--mu:#b9a6d9;--p:#b693f0;--pl:#9b72e0;--pp:#33244d;--bd:#3f2f5c;--er:#ffb3c4;--erb:#4a1d2a;--ok:#a8e6bf;--okb:#1d3d2a;--bt:#1a1226}}
+:root[data-theme="dark"]{--bg:#1a1226;--card:#261b38;--tx:#f1eaff;--mu:#b9a6d9;--p:#b693f0;--pl:#9b72e0;--pp:#33244d;--bd:#3f2f5c;--er:#ffb3c4;--erb:#4a1d2a;--ok:#a8e6bf;--okb:#1d3d2a;--bt:#1a1226}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5;background-color:var(--bg)}
+body.lock{overflow:hidden}
+.w{max-width:1040px;margin:0 auto;padding:0 18px}
+header{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--bd)}
+header .w{display:flex;align-items:center;justify-content:space-between;height:58px;gap:10px}
+.logo{font-weight:800;color:var(--p);text-decoration:none;font-size:17px}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav a{color:var(--tx);text-decoration:none;font-weight:600;font-size:14px;padding:8px 10px;border-radius:10px}
+nav a:hover{background:var(--pp)}
+.hero{background:var(--pp);padding:44px 0 36px;text-align:center}
+.hero h1{margin:6px 0;font-size:clamp(28px,6vw,46px);color:var(--p)}
+.hero p.s{font-size:18px;margin:8px auto 18px;max-width:560px}
+.cordao{font-size:22px;letter-spacing:4px}
+.alerta{display:inline-block;background:var(--p);color:var(--bt);font-weight:800;padding:12px 18px;border-radius:12px;margin:6px 0 20px;font-size:14px}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn,.out,a.btn{display:inline-block;text-align:center;text-decoration:none;font:inherit;font-weight:800;font-size:15px;padding:13px 20px;border-radius:12px;border:2px solid var(--p);cursor:pointer;background:var(--p);color:var(--bt)}
+.btn:hover{filter:brightness(1.08)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.sec,.out{background:transparent;color:var(--p)}
+.out{padding:9px 14px;font-size:14px}
+.btn.wa{background:#1f9d55;border-color:#1f9d55;color:#fff}
+section{padding:38px 0}
+h2{margin:0 0 6px;color:var(--p);font-size:28px}
+.mu{color:var(--mu)}
+.aviso{display:none;background:var(--okb);color:var(--ok);font-weight:700;padding:12px 16px;border-radius:12px;margin:14px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin-top:18px}
+.pr{background:var(--card);border:1px solid var(--bd);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.pr img,.ph{width:100%;height:170px;object-fit:cover;background:var(--pp);display:flex;align-items:center;justify-content:center;font-size:56px}
+.pr .bd{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.pr h3{margin:0;font-size:18px}.pr p{margin:0;font-size:14px}
+.tag{align-self:flex-start;background:var(--p);color:var(--bt);font-size:12px;font-weight:800;padding:3px 10px;border-radius:99px}
+.price{font-weight:800;font-size:20px;color:var(--p)}
+select,input,textarea{width:100%;font:inherit;font-size:16px;color:var(--tx);background:var(--bg);border:1.5px solid var(--bd);border-radius:10px;padding:10px 12px}
+input[type=checkbox]{width:auto}
+textarea{min-height:70px;resize:vertical}
+:focus-visible{outline:3px solid var(--pl);outline-offset:1px}
+.box{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:18px;margin-top:16px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--bd)}
+.row:last-child{border:0}
+.q{display:flex;align-items:center;gap:8px}
+.q button{width:34px;height:34px;border-radius:10px;border:1.5px solid var(--bd);background:var(--bg);color:var(--tx);font-weight:800;cursor:pointer}
+.tot{display:flex;justify-content:space-between;padding:4px 0}
+.tot.g{font-weight:800;font-size:20px;color:var(--p);border-top:2px solid var(--bd);margin-top:6px;padding-top:10px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.cols{grid-template-columns:1fr}nav a{padding:8px 6px;font-size:13px}.logo{font-size:15px}}
+label.f{display:block;margin-top:12px;font-weight:600;font-size:14px}
+label.f span{display:block;margin-bottom:5px}
+label.ck{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:14px;font-weight:600}
+.msg{display:none;padding:12px 14px;border-radius:12px;font-weight:700;font-size:14px;margin-top:12px}
+.msg.er{display:block;background:var(--erb);color:var(--er)}
+.msg.ok{display:block;background:var(--okb);color:var(--ok)}
+pre{white-space:pre-wrap;word-break:break-word;background:var(--bg);border:1px solid var(--bd);border-radius:12px;padding:12px;font:13px/1.5 ui-monospace,Menlo,monospace}
+footer{background:var(--p);color:var(--bt);padding:30px 0 40px;text-align:center}
+footer a{color:var(--bt)}
+footer .btn.wa{margin:10px 0}
+.own{background:none;border:0;color:var(--bt);text-decoration:underline;font:inherit;font-size:13px;cursor:pointer;opacity:.85;margin-top:14px}
+.modal{display:none;position:fixed;inset:0;background:rgba(20,10,40,.65);align-items:center;justify-content:center;padding:16px;z-index:50;overflow:auto}
+.modal.open{display:flex}
+.mc{background:var(--card);border-radius:18px;padding:24px;width:100%;max-width:420px;border:1px solid var(--bd)}
+#adm{display:none;position:fixed;inset:0;overflow:auto;background:var(--bg);z-index:60;padding:env(safe-area-inset-top,0px) 0 40px}
+#adm.open{display:block}
+#adm .top{position:sticky;top:0;background:var(--card);border-bottom:1px solid var(--bd);padding:12px 18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;z-index:2}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--p);color:var(--bt);padding:11px 18px;border-radius:99px;font-weight:700;font-size:14px;display:none;z-index:70}
+.thumb{width:80px;height:60px;object-fit:cover;border-radius:8px;margin-top:6px;display:block}
+</style>
+</head>
+<body class="">
+<noscript>Ative o JavaScript para usar o site.</noscript>
+
+<header><div class="w">
+  <a class="logo" href="#inicio">🧄 Cordão de Alho</a>
+  <nav aria-label="Principal"><a href="#cardapio">Cardápio</a><a href="#pedido">🛒 Pedido (<span id="cnt">0</span>)</a><a href="#contato">Contato</a></nav>
+</div></header>
+
+<main id="inicio">
+<div class="hero"><div class="w">
+  <div class="cordao" aria-hidden="true">🧄 🌿 🧄 🌿 🧄</div>
+  <h1>Marmitaria Cordão de Alho</h1>
+  <p class="s">Comida saborosa, preparada com carinho e entregue até você!</p>
+  <div class="alerta" role="note">SOMENTE DELIVERY OU RETIRADA — NÃO POSSUÍMOS ATENDIMENTO PRESENCIAL.</div>
+  <div class="btns"><a class="btn" href="#cardapio">VER CARDÁPIO DO DIA</a><a class="btn sec" href="#pedido">FAZER MEU PEDIDO</a></div>
+</div></div>
+
+<section id="cardapio"><div class="w">
+  <h2>Cardápio do Dia</h2>
+  <p class="mu" style="margin:0">Escolha sua marmita e adicione ao pedido.</p>
+  <div id="aviso" class="aviso" role="status"></div>
+  <div id="lista" class="grid"></div>
+</div></section>
+
+<section id="pedido" style="background:var(--pp)"><div class="w">
+  <h2>Meu Pedido</h2>
+  <div class="box" id="cart"></div>
+  <form id="f" class="box" novalidate="">
+    <h3 style="margin:0 0 4px">Dados para entrega</h3>
+    <label class="f"><span>Observações do pedido (ex.: sem cebola)</span><textarea id="obs"></textarea></label>
+    <label class="f"><span>Entrega ou retirada *</span><select id="tipo"><option>Entrega</option><option>Retirada</option></select></label>
+    <div class="cols">
+      <label class="f"><span>Nome completo *</span><input id="nome" autocomplete="name"></label>
+      <label class="f"><span>Telefone para contato *</span><input id="tel" inputmode="tel" autocomplete="tel"></label>
+    </div>
+    <div id="end">
+      <div class="cols">
+        <label class="f"><span>Rua e número *</span><input id="rua" autocomplete="street-address"></label>
+        <label class="f"><span>Bairro *</span><input id="bairro"></label>
+        <label class="f"><span>Cidade *</span><input id="cidade"></label>
+        <label class="f"><span>Complemento ou ponto de referência</span><input id="comp"></label>
+      </div>
+    </div>
+    <label class="f"><span>Forma de pagamento *</span><select id="pag"><option value="">Selecione…</option><option>Pix</option><option>Dinheiro</option><option>Cartão de débito</option><option>Cartão de crédito</option></select></label>
+    <div id="pixinfo" class="msg"></div>
+    <div id="troco" style="display:none">
+      <label class="f"><span>Precisa de troco?</span><select id="ptroco"><option value="nao">Não</option><option value="sim">Sim</option></select></label>
+      <label class="f" id="vtw" style="display:none"><span>Troco para quanto? (R$)</span><input id="vt" inputmode="decimal"></label>
+    </div>
+    <div id="err" class="msg er" role="alert"></div>
+    <button class="btn wa" style="width:100%;margin-top:16px" type="submit">FINALIZAR PEDIDO PELO WHATSAPP</button>
+  </form>
+  <div id="conf" class="box" style="display:none"></div>
+</div></section>
+
+<section id="contato"><div class="w">
+  <h2>Contato</h2>
+  <div class="box">
+    <h3 style="margin:0">Marmitaria Cordão de Alho</h3>
+    <p>Atendimento exclusivamente por delivery.</p>
+    <p>WhatsApp: (67) 99170-2762</p>
+    <a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/5567991702762">FALE CONOSCO PELO WHATSAPP</a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="w">
+  <div class="cordao" aria-hidden="true">🧄 🌿 🧄</div>
+  <strong>Marmitaria Cordão de Alho</strong>
+  <p style="margin:4px 0">(67) 99170-2762 · Somente delivery</p>
+  <a href="#cardapio">Ver cardápio</a><br>
+  <a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/5567991702762">WhatsApp</a><br>
+  <button class="own" id="ownerlnk" type="button">Acesso do proprietário</button>
+</div></footer>
+
+<!-- Login do proprietário -->
+<div class="modal" id="mlogin" role="dialog" aria-modal="true" aria-labelledby="lt"><div class="mc">
+  <h3 id="lt" style="margin:0 0 4px;color:var(--p)">🧄 Acesso do proprietário</h3>
+  <p class="mu" style="margin:0">Entre para trocar o cardápio do dia.</p>
+  <form id="lf" novalidate="">
+    <label class="f"><span>E-mail</span><input id="lemail" type="text" inputmode="email" autocomplete="username" autocapitalize="off" spellcheck="false"></label>
+    <label class="f"><span>Senha</span><input id="lsenha" type="password" autocomplete="current-password"></label>
+    <div id="lerr" class="msg " role="alert"></div>
+    <div class="btns" style="margin-top:16px;justify-content:space-between"><button class="out" type="button" id="lcancel">Cancelar</button><button class="btn" type="submit">Entrar</button></div>
+  </form>
+</div></div>
+
+<!-- Painel do proprietário -->
+<div id="adm" role="dialog" aria-modal="true" aria-label="Painel do proprietário" class="">
+  <div class="top"><strong style="color:var(--p)">🧄 Painel do proprietário</strong>
+    <div class="btns"><button class="btn" id="pub" type="button">PUBLICAR ALTERAÇÕES</button><button class="out" id="sair" type="button">Sair</button></div></div>
+  <div class="w" style="padding-top:8px">
+    <div id="admmsg" class="msg " role="status"></div>
+    <p class="mu" style="font-size:14px">As mudanças só aparecem para os clientes depois de clicar em <b>Publicar alterações</b>.</p>
+    <div id="admbody"></div>
+  </div>
+</div>
+<div id="toast" role="status"></div>
+
+<script type="application/json" id="dados">{"aviso":"Cardápio atualizado!","taxa":0,"pagamentos":["Pix","Dinheiro","Cartão de débito","Cartão de crédito"],"pix":"","pratos":[{"id":"p1","nome":"Frango grelhado (exemplo)","desc":"Peito de frango grelhado com temperos naturais e alho.","acomp":"Arroz, feijão e salada","foto":"","tam":[{"n":"Média","p":20},{"n":"Grande","p":25}],"disp":true,"dia":true},{"id":"p2","nome":"Carne de panela (exemplo)","desc":"Carne macia cozida lentamente com legumes.","acomp":"Arroz, feijão e purê","foto":"","tam":[{"n":"Média","p":22},{"n":"Grande","p":28}],"disp":true,"dia":true}]}</script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var D,W,AR=null,AS=null,cart=[],WA="5567991702762",EM=["usuario90@gmail","usuario90@gmail.com"],PW="isadora2020";
+try{D=JSON.parse($("dados").textContent)}catch(e){D={aviso:"",taxa:0,pagamentos:["Pix","Dinheiro"],pix:"",pratos:[]}}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function brl(v){return "R$ "+Number(v).toFixed(2).replace(".",",")}
+function num(s){var n=parseFloat(String(s).replace(",","."));return isNaN(n)||n<0?0:n}
+function toast(t){var e=$("toast");e.textContent=t;e.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(function(){e.style.display="none"},2200)}
+function msg(id,t,k){var e=$(id);e.textContent=t;e.className="msg "+(t?k:"")}
+
+/* ---------- Cardápio ---------- */
+function renderMenu(){
+  var a=$("aviso");a.textContent=D.aviso||"";a.style.display=D.aviso?"block":"none";
+  var ps=D.pratos.slice().sort(function(x,y){return (y.dia?1:0)-(x.dia?1:0)});
+  $("lista").innerHTML=ps.length?ps.map(card).join(""):'<p class="mu">O cardápio será atualizado em breve.</p>';
+}
+function card(p){
+  var foto=p.foto?'<img src="'+esc(p.foto)+'" alt="'+esc(p.nome)+'" loading="lazy">':'<div class="ph" aria-hidden="true">🍛</div>';
+  var t=p.tam,sel=t.length>1?'<select id="t_'+p.id+'" aria-label="Tamanho da marmita">'+t.map(function(x,i){return '<option value="'+i+'">'+esc(x.n)+" — "+brl(x.p)+"</option>"}).join("")+"</select>":'<input type="hidden" id="t_'+p.id+'" value="0">';
+  var pr=t.length>1?"a partir de "+brl(Math.min.apply(null,t.map(function(x){return x.p}))):brl(t[0].p);
+  return '<article class="pr">'+foto+'<div class="bd">'+(p.dia?'<span class="tag">Prato do dia</span>':"")+"<h3>"+esc(p.nome)+"</h3><p>"+esc(p.desc)+"</p>"+(p.acomp?'<p class="mu"><b>Acompanhamentos:</b> '+esc(p.acomp)+"</p>":"")+'<div class="price">'+pr+"</div>"+sel+(p.disp?'<button class="btn" data-add="'+p.id+'">ADICIONAR AO PEDIDO</button>':'<button class="btn" disabled>ESGOTADO</button>')+"</div></article>";
+}
+$("lista").addEventListener("click",function(e){
+  var id=e.target.getAttribute("data-add");if(!id)return;
+  var p=D.pratos.filter(function(x){return x.id===id})[0];if(!p||!p.disp)return;
+  var i=parseInt($("t_"+id).value,10)||0,t=p.tam[i],k=id+"|"+i;
+  var it=cart.filter(function(c){return c.k===k})[0];
+  if(it)it.q++;else cart.push({k:k,nome:p.nome,tam:p.tam.length>1?t.n:"",p:t.p,q:1});
+  renderCart();toast("Adicionado ao pedido!");
+});
+
+/* ---------- Carrinho ---------- */
+function tot(){
+  var s=cart.reduce(function(a,c){return a+c.p*c.q},0),ent=$("tipo").value==="Entrega";
+  var tx=ent&&cart.length?num(D.taxa):0;return{s:s,tx:tx,t:s+tx,ent:ent};
+}
+function renderCart(){
+  var n=cart.reduce(function(a,c){return a+c.q},0);$("cnt").textContent=n;
+  if(!cart.length){$("cart").innerHTML='<p class="mu" style="margin:0">Seu pedido está vazio. Escolha uma marmita no cardápio.</p>';return}
+  var T=tot();
+  $("cart").innerHTML=cart.map(function(c){return '<div class="row"><div><b>'+esc(c.nome)+"</b>"+(c.tam?' <span class="mu">('+esc(c.tam)+")</span>":"")+'<br><span class="mu">'+brl(c.p)+' cada</span></div><div class="q"><button data-m="'+c.k+'" aria-label="Diminuir">−</button><b>'+c.q+'</b><button data-pl="'+c.k+'" aria-label="Aumentar">+</button><button data-r="'+c.k+'" aria-label="Remover" title="Remover">✕</button></div></div>'}).join("")
+   +'<div class="tot"><span>Subtotal</span><span>'+brl(T.s)+"</span></div>"+(T.ent&&num(D.taxa)>0?'<div class="tot"><span>Taxa de entrega</span><span>'+brl(T.tx)+"</span></div>":"")+'<div class="tot g"><span>Total</span><span>'+brl(T.t)+"</span></div>";
+}
+$("cart").addEventListener("click",function(e){
+  var b=e.target,k=b.getAttribute("data-m")||b.getAttribute("data-pl")||b.getAttribute("data-r");if(!k)return;
+  var it=cart.filter(function(c){return c.k===k})[0];if(!it)return;
+  if(b.hasAttribute("data-pl"))it.q++;
+  else if(b.hasAttribute("data-m")){it.q--;if(it.q<1)cart=cart.filter(function(c){return c!==it})}
+  else cart=cart.filter(function(c){return c!==it});
+  renderCart();
+});
+
+/* ---------- Checkout ---------- */
+function fillPag(){
+  var s=$("pag"),cur=s.value;
+  s.innerHTML='<option value="">Selecione…</option>'+D.pagamentos.map(function(p){return "<option>"+esc(p)+"</option>"}).join("");
+  if(D.pagamentos.indexOf(cur)>-1)s.value=cur;pagChange();
+}
+function pagChange(){
+  var v=$("pag").value,din=/dinheiro/i.test(v),pix=/pix/i.test(v)&&D.pix;
+  $("troco").style.display=din?"block":"none";
+  $("vtw").style.display=din&&$("ptroco").value==="sim"?"block":"none";
+  var pi=$("pixinfo");pi.textContent=pix?"Chave Pix: "+D.pix:"";pi.className="msg"+(pix?" ok":"");
+}
+$("pag").addEventListener("change",pagChange);
+$("ptroco").addEventListener("change",pagChange);
+$("tipo").addEventListener("change",function(){$("end").style.display=$("tipo").value==="Entrega"?"block":"none";renderCart()});
+$("f").addEventListener("submit",function(e){
+  e.preventDefault();
+  var er=[],T=tot(),g=function(i){return $(i).value.trim()};
+  if(!cart.length)er.push("Adicione ao menos uma marmita ao pedido.");
+  if(g("nome").length<3)er.push("Informe seu nome completo.");
+  if(g("tel").replace(/\D/g,"").length<10)er.push("Informe um telefone com DDD.");
+  if(T.ent){if(!g("rua"))er.push("Informe a rua e o número.");if(!g("bairro"))er.push("Informe o bairro.");if(!g("cidade"))er.push("Informe a cidade.")}
+  if(!$("pag").value)er.push("Escolha a forma de pagamento.");
+  var troco="";
+  if(/dinheiro/i.test($("pag").value)&&$("ptroco").value==="sim"){var vt=num($("vt").value);if(vt<=T.t)er.push("O valor do troco deve ser maior que o total ("+brl(T.t)+").");else troco=brl(vt)}
+  if(er.length){msg("err",er.join(" "),"er");return}
+  msg("err","","");
+  var L=["NOVO PEDIDO — MARMITARIA CORDÃO DE ALHO","","Nome: "+g("nome"),"","Telefone: "+g("tel"),"","Tipo: "+$("tipo").value,"","ENDEREÇO DE ENTREGA:",
+    T.ent?g("rua")+", "+g("bairro")+", "+g("cidade")+(g("comp")?" — "+g("comp"):""):"Retirada (sem entrega)","","PEDIDO:"];
+  cart.forEach(function(c){L.push(c.q+" x "+c.nome+(c.tam?" ("+c.tam+")":"")+" — "+brl(c.p*c.q))});
+  L.push("","Observações: "+(g("obs")||"Nenhuma"),"","Subtotal: "+brl(T.s),"","Taxa de entrega: "+brl(T.tx),"","TOTAL: "+brl(T.t),"","Forma de pagamento: "+$("pag").value);
+  if(troco)L.push("","Troco para: "+troco);
+  var txt=L.join("\n"),url="https://wa.me/"+WA+"?text="+encodeURIComponent(txt);
+  var c=$("conf");c.style.display="block";
+  c.innerHTML='<h3 style="margin:0 0 6px">Pedido pronto para enviar</h3><p class="mu" style="margin:0 0 10px">Confira a mensagem abaixo. O pedido <b>só é enviado quando você tocar em "enviar" dentro do WhatsApp</b>.</p><pre>'+esc(txt)+'</pre><a class="btn wa" style="width:100%;margin-top:12px" target="_blank" rel="noopener" href="'+url+'">ABRIR WHATSAPP E ENVIAR</a>';
+  c.scrollIntoView({behavior:"smooth",block:"start"});
+  try{window.open(url,"_blank","noopener")}catch(x){}
+});
+
+/* ---------- Acesso do proprietário ---------- */
+function open_(id,on){$(id).classList[on?"add":"remove"]("open");document.body.classList[on?"add":"remove"]("lock")}
+$("ownerlnk").addEventListener("click",function(){msg("lerr","","");$("lf").reset();open_("mlogin",true);$("lemail").focus()});
+$("lcancel").addEventListener("click",function(){open_("mlogin",false)});
+$("lf").addEventListener("submit",function(e){
+  e.preventDefault();
+  var em=$("lemail").value.trim().toLowerCase(),pw=$("lsenha").value;
+  if(!em||!pw){msg("lerr","Preencha o e-mail e a senha.","er");return}
+  if(EM.indexOf(em)>-1&&pw===PW){try{sessionStorage.setItem("adm","1")}catch(x){}open_("mlogin",false);abrirAdmin()}
+  else{msg("lerr","E-mail ou senha incorretos. Tente novamente.","er");$("lsenha").value="";$("lsenha").focus()}
+});
+
+function makeW(){
+  W={aviso:D.aviso||"",taxa:String(D.taxa||0).replace(".",","),pagamentos:D.pagamentos.join(", "),pix:D.pix||"",
+   pratos:D.pratos.map(function(p){return{id:p.id,nome:p.nome,desc:p.desc||"",acomp:p.acomp||"",foto:p.foto||"",
+    tamTxt:p.tam.map(function(t){return t.n+"="+String(t.p).replace(".",",")}).join("\n"),disp:!!p.disp,dia:!!p.dia}})};
+}
+function fld(l,i){return '<label class="f"><span>'+l+"</span>"+i+"</label>"}
+function renderAdmin(){
+  var h='<div class="box"><h3 style="margin:0">Aviso do dia, entrega e pagamento</h3>'
+   +fld("Aviso do dia (ex.: Cardápio atualizado!, Últimas unidades!)",'<input data-c="aviso" value="'+esc(W.aviso)+'">')
+   +fld("Taxa de entrega (R$) — use 0 se não houver",'<input data-c="taxa" inputmode="decimal" value="'+esc(W.taxa)+'">')
+   +fld("Formas de pagamento aceitas (separe por vírgula)",'<input data-c="pagamentos" value="'+esc(W.pagamentos)+'">')
+   +fld("Chave Pix (opcional — só aparece para o cliente se preenchida)",'<input data-c="pix" value="'+esc(W.pix)+'">')+"</div>"
+   +'<h3 style="margin:22px 0 0">Pratos</h3>';
+  W.pratos.forEach(function(p,i){
+    var d='data-i="'+i+'" ';
+    h+='<div class="box"><h4 style="margin:0;color:var(--p)">'+esc(p.nome||"Novo prato")+"</h4>"
+     +fld("Nome",'<input '+d+'data-f="nome" value="'+esc(p.nome)+'">')
+     +fld("Descrição",'<textarea '+d+'data-f="desc">'+esc(p.desc)+"</textarea>")
+     +fld("Acompanhamentos",'<input '+d+'data-f="acomp" value="'+esc(p.acomp)+'">')
+     +fld("Tamanhos e preços (um por linha, no formato Nome=preço — ex.: Média=20,00)",'<textarea '+d+'data-f="tamTxt">'+esc(p.tamTxt)+"</textarea>")
+     +'<label class="f"><span>Foto</span>'+(p.foto?'<img class="thumb" src="'+esc(p.foto)+'" alt="">':"")+(AS?'<input type="file" accept="image/*" data-up="'+i+'">':'<span class="mu">Envio de fotos indisponível nesta visualização.</span>')+"</label>"
+     +'<label class="ck"><input type="checkbox" '+d+'data-f="disp"'+(p.disp?" checked":"")+"> Disponível (desmarque para marcar como ESGOTADO)</label>"
+     +'<label class="ck"><input type="checkbox" '+d+'data-f="dia"'+(p.dia?" checked":"")+"> Prato do dia (aparece em destaque)</label>"
+     +'<button class="out" style="margin-top:14px" type="button" data-del="'+i+'">Excluir prato</button></div>';
+  });
+  $("admbody").innerHTML=h+'<button class="btn sec" style="margin-top:16px" type="button" id="novo">+ ADICIONAR PRATO</button>';
+}
+function abrirAdmin(){makeW();renderAdmin();msg("admmsg","","");open_("adm",true);$("adm").scrollTop=0}
+$("admbody").addEventListener("input",function(e){
+  var t=e.target,c=t.getAttribute("data-c"),i=t.getAttribute("data-i"),f=t.getAttribute("data-f");
+  if(c)W[c]=t.value;else if(i!==null&&f)W.pratos[i][f]=t.type==="checkbox"?t.checked:t.value;
+});
+$("admbody").addEventListener("change",function(e){
+  var t=e.target,u=t.getAttribute("data-up");
+  if(u!==null&&t.files&&t.files[0]&&AS){
+    msg("admmsg","Enviando foto…","ok");
+    AS.upload(t.files[0]).then(function(r){W.pratos[u].foto="/_blob/"+r.id;renderAdmin();msg("admmsg","Foto enviada. Clique em Publicar alterações para salvar.","ok")})
+     .catch(function(){msg("admmsg","Não foi possível enviar a foto.","er")});
+  }
+});
+$("admbody").addEventListener("click",function(e){
+  var b=e.target;
+  if(b.id==="novo"){W.pratos.push({id:"p"+Date.now(),nome:"",desc:"",acomp:"",foto:"",tamTxt:"",disp:true,dia:false});renderAdmin();return}
+  var d=b.getAttribute("data-del");
+  if(d!==null){
+    if(b.getAttribute("data-sure")){W.pratos.splice(+d,1);renderAdmin()}
+    else{b.setAttribute("data-sure","1");b.textContent="Clique de novo para confirmar a exclusão"}
+  }
+});
+$("sair").addEventListener("click",function(){try{sessionStorage.removeItem("adm")}catch(x){}open_("adm",false)});
+
+function limpar(){
+  var pg=W.pagamentos.split(",").map(function(s){return s.trim()}).filter(Boolean);
+  if(!pg.length)return{e:"Informe ao menos uma forma de pagamento."};
+  var ps=[];
+  for(var i=0;i<W.pratos.length;i++){
+    var p=W.pratos[i],nome=p.nome.trim();
+    if(!nome)return{e:"Dê um nome ao prato "+(i+1)+" ou exclua-o."};
+    var tam=[];
+    p.tamTxt.split("\n").forEach(function(l){var k=l.lastIndexOf("=");if(k<1)return;var n=l.slice(0,k).trim(),v=num(l.slice(k+1));if(n&&v>0)tam.push({n:n,p:v})});
+    if(!tam.length)return{e:'Informe ao menos um tamanho com preço em "'+nome+'" (ex.: Média=20,00).'};
+    ps.push({id:p.id,nome:nome,desc:p.desc.trim(),acomp:p.acomp.trim(),foto:p.foto,tam:tam,disp:!!p.disp,dia:!!p.dia});
+  }
+  return{d:{aviso:W.aviso.trim(),taxa:num(W.taxa),pagamentos:pg,pix:W.pix.trim(),pratos:ps}};
+}
+$("pub").addEventListener("click",function(){
+  var r=limpar();if(r.e){msg("admmsg",r.e,"er");return}
+  if(!AR){msg("admmsg","Não foi possível salvar aqui: abra o site logado no claude.ai como dono da página para publicar alterações.","er");return}
+  var c=document.documentElement.cloneNode(true);
+  c.querySelector("#dados").textContent=JSON.stringify(r.d).replace(/</g,"\\u003c");
+  ["lista","cart","admbody","conf","aviso","toast"].forEach(function(id){var e=c.querySelector("#"+id);if(e){e.innerHTML="";e.removeAttribute("style")}});
+  c.querySelector("#conf").setAttribute("style","display:none");
+  [].forEach.call(c.querySelectorAll(".open"),function(e){e.classList.remove("open")});
+  c.querySelector("body").classList.remove("lock");
+  msg("admmsg","Publicando…","ok");$("pub").disabled=true;
+  AR.publish("<!DOCTYPE html>\n"+c.outerHTML).then(function(){msg("admmsg","Publicado! A página será recarregada com o novo cardápio.","ok")})
+   .catch(function(err){$("pub").disabled=false;msg("admmsg",(err&&err.code==="conflict")?"Outra alteração foi publicada ao mesmo tempo. A página será recarregada.":"Não foi possível publicar. Verifique se você é o dono da página no claude.ai.","er")});
+});
+
+/* ---------- Início ---------- */
+renderMenu();fillPag();renderCart();
+if(window.claude&&claude.use){
+  claude.use("artifact").then(function(a){AR=a}).catch(function(){});
+  claude.use("assets").then(function(a){AS=a;if($("adm").classList.contains("open")){var s=$("adm").scrollTop;renderAdmin();$("adm").scrollTop=s}}).catch(function(){});
+}
+try{if(sessionStorage.getItem("adm")==="1")abrirAdmin()}catch(x){}
+})();
+</script>
+
+
+</body></html>
